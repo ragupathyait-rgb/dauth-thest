@@ -50,7 +50,7 @@ export default function Dashboard() {
       const tokenData = JSON.parse(localStorage.getItem("dauth_tokens"));
       const accessToken = tokenData?.access_token;
       console.log("Access Token: >>>>>>>>>>>>>>>>>>>>>.", accessToken);
-      const response = await axios.get("https://unimperialistic-nonpalatable-christena.ngrok-free.dev/api/user/profile", {
+      const response = await axios.get("http://localhost:4000/api/user/profile", {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
