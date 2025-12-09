@@ -1,7 +1,7 @@
 // services/apiService.js
 import axios from "axios";
 
-const API_URL = "https://b104bbcd6837.ngrok-free.app";
+const API_URL = "https://unimperialistic-nonpalatable-christena.ngrok-free.dev";
 
 // Store token in memory
 let authToken = null;
