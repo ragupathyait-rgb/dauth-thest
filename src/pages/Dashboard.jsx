@@ -76,55 +76,63 @@ export default function Dashboard() {
     <div className="p-8 max-w-4xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       {user && (
-  <div className="space-y-4 p-4 bg-gray-50 rounded-xl shadow-sm border">
-    <div className="p-4 bg-white rounded-lg shadow">
-      <p className="text-xl font-semibold">
-        Welcome, <span className="font-bold">{user.name || user.email}</span>!
-      </p>
-
-      {user.email && (
-        <p className="text-sm text-gray-600 mt-1">
-          Email: {user.email.trim()}
-        </p>
-      )}
-
-        {user.phone_number && (
-          <p className="text-sm text-gray-600">
-            Phone: {user.phone_number}
-          </p>
-        )}
-
-        {user.sub && (
-          <p className="text-sm text-gray-600">
-            Username: {user.name}
-          </p>
-        )}
-
-        {user.userId && (
-          <p className="text-sm text-gray-600">
-            User ID: {user.userId}
-          </p>
-        )}
-      </div>
-
-      {/* Wallet Section */}
-      {user.wallet && (
-        <div className="p-4 bg-white rounded-lg shadow flex items-center justify-between">
-          <div>
-            <p className="text-sm text-gray-500">Wallet Address</p>
-            <p className="font-mono text-sm mt-1">{user.wallet}</p>
+        <div className="space-y-4 p-4 bg-gray-50 rounded-xl shadow-sm border">
+          <div className="p-4 bg-white rounded-lg shadow flex items-center gap-4">
+            {user.picture && (
+              <img
+                src={user.picture}
+                alt="Profile"
+                className="w-16 h-16 rounded-full border"
+              />
+            )}
+            <div>
+              <p className="text-xl font-semibold">
+                Welcome, <span className="font-bold">{user.name || user.email}</span>!
+              </p>
+              {user.email && (
+                <p className="text-sm text-gray-600 mt-1">
+                  Email: {user.email.trim()}
+                </p>
+              )}
+              {user.masked_email && (
+                <p className="text-sm text-gray-600 mt-1">
+                  Masked Email: {user.masked_email}
+                </p>
+              )}
+              {user.phone_number && (
+                <p className="text-sm text-gray-600">
+                  Phone: {user.phone_number}
+                </p>
+              )}
+              {user.sub && (
+                <p className="text-sm text-gray-600">
+                  Username: {user.name}
+                </p>
+              )}
+              {user.userId && (
+                <p className="text-sm text-gray-600">
+                  User ID: {user.userId}
+                </p>
+              )}
+              {/* Wallet Section */}
+              {user.wallet && (
+                <div className="p-4 bg-white rounded-lg shadow flex items-center justify-between mt-4">
+                  <div>
+                    <p className="text-sm text-gray-500">Wallet Address</p>
+                    <p className="font-mono text-sm mt-1">{user.wallet}</p>
+                  </div>
+                  <button
+                    className="px-3 py-1 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                    onClick={() => navigator.clipboard.writeText(user.wallet)}
+                  >
+                    Copy
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-
-          <button
-            className="px-3 py-1 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-            onClick={() => navigator.clipboard.writeText(user.wallet)}
-          >
-            Copy
-          </button>
         </div>
       )}
-    </div>
-  )}
       <p className="mb-4">You are logged in via DAuth.</p>
 
       {/* Example: Test API call */}
